@@ -1,59 +1,76 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📘 Panduan Instalasi & Penggunaan Repository
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Selamat datang di repository tutorial ini! Proyek ini disusun secara bertahap untuk memudahkan proses pembelajaran Anda.
 
-## About Laravel
+> **Penting:** Setiap "tahap" atau langkah dalam tutorial ini disimpan dalam **branch (cabang) Git** yang berbeda. Hal ini memungkinkan Anda untuk melihat kode pada titik waktu tertentu tanpa bingung dengan perubahan di masa depan.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Prasyarat
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Sebelum memulai, pastikan Anda telah menginstal Git di komputer Anda.
 
-## Learning Laravel
+- Cek instalasi dengan perintah:  
+git --version
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- Jika belum terpasang, unduh Git di [git-scm.com](https://git-scm.com)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🚀 Cara Mengunduh (Clone)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Anda memiliki dua opsi utama untuk mengunduh proyek ini, tergantung kebutuhan Anda:
 
-### Premium Partners
+### Opsi 1: Mengunduh Seluruh Proyek (Direkomendasikan)
+Gunakan jika ingin mengikuti tutorial dari awal hingga akhir dan berpindah antar tahap dengan bebas.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1. Buka terminal atau Git Bash.
+2. Jalankan perintah berikut:  
+git clone https://github.com/madasepandri/laravel_notes.git
+3. Masuk ke direktori proyek:  
+cd repository-anda
+4. Secara default Anda akan berada di branch `main` (atau `master`). Untuk melihat semua tahap yang tersedia:  
+git branch -a
 
-## Contributing
+### Opsi 2: Mengunduh Hanya Tahap Tertentu (Hemat Penyimpanan)
+Gunakan jika hanya tertarik pada satu tahap spesifik.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Format perintah:  
+git clone --branch <nama-branch> --single-branch https://github.com/madasepandri/laravel_notes.git
 
-## Code of Conduct
+Contoh untuk mengunduh hanya cabang quickstart:  
+git clone --branch quickstart --single-branch https://github.com/madasepandri/laravel_notes.git
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 🔀 Cara Berpindah Antar Tahap (Branch)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Jika menggunakan Opsi 1, Anda dapat berpindah antar tahap kapan saja:
 
-## License
+- Lihat daftar tahap:  
+git branch -r
+- Pindah ke tahap yang diinginkan, misal quickstart:  
+git checkout quickstart
+- Kembali ke kode awal (versi utama):  
+git checkout main
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+> ⚠️ **Catatan Penting:** Pastikan tidak ada perubahan file yang belum disimpan (uncommitted changes) sebelum berpindah branch. Simpan perubahan (commit) atau simpan sementara (stash) agar tidak terjadi konflik.
+
+---
+
+## 🛠️ Instalasi Dependensi
+
+Setelah berada di branch yang diinginkan, install dependensi proyek dengan:
+
+composer install
+
+
+---
+
+## 🤝 Berkontribusi
+
+Jika Anda menemukan bug atau kesalahan di salah satu tahap tutorial, silakan buat **Issue** atau ajukan **Pull Request** ke branch yang relevan.
+
+---
+
+Selamat belajar dan semoga bermanfaat!
