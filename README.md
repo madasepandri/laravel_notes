@@ -427,4 +427,3 @@ Buka file `resources/views/layouts/navigation.blade.php`. Temukan bagian "Naviga
 </div>
 ```
 
-Selesai! Anda sekarang memiliki aplikasi catatan yang fungsional dengan Laravel 12.
