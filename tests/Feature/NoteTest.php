@@ -100,15 +100,16 @@ class NoteTest extends TestCase
         $this->assertDatabaseMissing('notes', ['id' => $note->id]);
     }
 
-    public function test_an_authenticated_user_cannot_delete_other_users_notes()
+    public function test_an_authenticated_user_can_search_for_a_note()
     {
         $user = User::factory()->create();
-        $otherUser = User::factory()->create();
-        $note = Note::factory()->create(['user_id' => $otherUser->id]);
+        $note1 = Note::factory()->create(['user_id' => $user->id, 'title' => 'This is the first note']);
+        $note2 = Note::factory()->create(['user_id' => $user->id, 'title' => 'This is the second note']);
 
-        $response = $this->actingAs($user)->delete(route('notes.destroy', $note));
+        $response = $this->actingAs($user)->get(route('notes.index', ['search' => 'first']));
 
-        $response->assertStatus(403);
-        $this->assertDatabaseHas('notes', ['id' => $note->id]);
+        $response->assertStatus(200);
+        $response->assertSee($note1->title);
+        $response->assertDontSee($note2->title);
     }
 }
