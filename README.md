@@ -170,5 +170,3 @@ Terakhir, kita perlu memperbarui tampilan `notes/index.blade.php` untuk menampil
     </div>
 </x-app-layout>
 ```
-
-Dengan perubahan ini, aplikasi "Laravel Notes" Anda sekarang lebih kuat, skalabel, dan ramah pengguna.
