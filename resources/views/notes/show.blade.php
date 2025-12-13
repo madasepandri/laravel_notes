@@ -10,6 +10,12 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="prose dark:prose-invert">
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                            Kategori: {{ $note->category->name ?? 'Tidak Ada Kategori' }}
+                        </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                            Dibuat oleh: {{ $note->user->name ?? 'Pengguna Tidak Dikenal' }}
+                        </p>
                         {!! nl2br(e($note->content)) !!}
                     </div>
 

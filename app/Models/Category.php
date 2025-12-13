@@ -5,36 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Note extends Model
+class Category extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'content',
-        'category_id',
+        'name',
         'organization_id',
     ];
 
     /**
-     * Get the category that owns the note.
-     */
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(Category::class);
-    }
-
-    /**
-     * Get the organization that owns the note.
+     * Get the organization that owns the category.
      */
     public function organization(): BelongsTo
     {
         return $this->belongsTo(Organization::class);
     }
 
-    public function user(): BelongsTo
+    /**
+     * Get the notes for the category.
+     */
+    public function notes(): HasMany
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Note::class);
     }
 }

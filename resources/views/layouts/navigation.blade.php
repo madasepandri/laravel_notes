@@ -15,9 +15,24 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Beranda') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('notes.index')" :active="request()->routeIs('notes.index')">
-                        {{ __('Catatan') }}
-                    </x-nav-link>
+                    @unless(Auth::user()->role === 'super_admin')
+                        <x-nav-link :href="route('notes.index')" :active="request()->routeIs('notes.index')">
+                            {{ __('Catatan') }}
+                        </x-nav-link>
+                    @endunless
+                    @if(Auth::user()->role === 'super_admin')
+                        <x-nav-link :href="route('superadmin.admins.index')" :active="request()->routeIs('superadmin.admins.index')">
+                            {{ __('Kelola Admin') }}
+                        </x-nav-link>
+                    @endif
+                    @if(Auth::user()->role === 'admin')
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                            {{ __('Kelola Pengguna') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                            {{ __('Kelola Kategori') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -38,7 +53,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Profil') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -48,7 +63,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Keluar') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -73,9 +88,24 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Beranda') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('notes.index')" :active="request()->routeIs('notes.index')">
-                {{ __('Catatan') }}
-            </x-responsive-nav-link>
+            @unless(Auth::user()->role === 'super_admin')
+                <x-responsive-nav-link :href="route('notes.index')" :active="request()->routeIs('notes.index')">
+                    {{ __('Catatan') }}
+                </x-responsive-nav-link>
+            @endunless
+            @if(Auth::user()->role === 'super_admin')
+                <x-responsive-nav-link :href="route('superadmin.admins.index')" :active="request()->routeIs('superadmin.admins.index')">
+                    {{ __('Kelola Admin') }}
+                </x-responsive-nav-link>
+            @endif
+            @if(Auth::user()->role === 'admin')
+                <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                    {{ __('Kelola Pengguna') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                    {{ __('Kelola Kategori') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
@@ -87,7 +117,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Profil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -97,7 +127,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Keluar') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
