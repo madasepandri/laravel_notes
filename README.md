@@ -224,15 +224,9 @@ Tambahkan/isi variable berikut di `.env` (lihat `.env.example`):
 
 ```dotenv
 MIDTRANS_IS_PRODUCTION=false
-MIDTRANS_SERVER_KEY=SB-Mid-server-xxxx
-MIDTRANS_CLIENT_KEY=SB-Mid-client-xxxx
-
-# SSL
-MIDTRANS_VERIFY_SSL=true
-# Opsional (Windows/Laragon), isi bila sering kena cURL error 77
-MIDTRANS_CA_CERT=C:\laragon\etc\ssl\cacert.pem
-
-# Biaya aktivasi organisasi
+MIDTRANS_SERVER_KEY=xxxxx
+MIDTRANS_CLIENT_KEY=xxxxx
+IDTRANS_VERIFY_SSL=false
 ORG_REG_FEE=100000
 ```
 
@@ -1128,39 +1122,3 @@ return Application::configure(basePath: dirname(__DIR__))
 
 Buka `/billing`:
 - Jika status belum berubah setelah bayar (local), klik **Perbarui Status**.
-
----
-
-## 12) Troubleshooting
-
-### 12.1. cURL error 77 (SSL certificate)
-
-Jika request ke Midtrans gagal dengan `cURL error 77 ... cacert.pem`:
-
-Solusi disarankan (global PHP di Laragon):
-1. Cek `php.ini`: `php --ini`
-2. Set:
-   - `curl.cainfo="C:\laragon\etc\ssl\cacert.pem"`
-   - `openssl.cafile="C:\laragon\etc\ssl\cacert.pem"`
-3. Restart Laragon.
-
-Alternatif per project:
-- Set `.env`:
-  - `MIDTRANS_CA_CERT=C:\laragon\etc\ssl\cacert.pem`
-- Lalu `php artisan config:clear`
-
-### 12.2. Halaman billing tidak berubah setelah bayar
-
-Biasanya webhook tidak bisa menjangkau local. Gunakan tombol **Perbarui Status** (route `POST /billing/sync`).
-
----
-
-## Referensi File Utama
-
-- Konfigurasi: `config/midtrans.php`, `config/billing.php`
-- Migrasi: `database/migrations/2025_12_18_000001_add_activation_to_organizations_table.php`, `database/migrations/2025_12_18_000002_create_payments_table.php`
-- Payment model: `app/Models/Payment.php`
-- Register flow: `routes/auth.php`, `app/Http/Controllers/Auth/RegisteredUserController.php`, `resources/views/auth/register.blade.php`
-- Billing: `routes/web.php`, `app/Http/Controllers/BillingController.php`, `resources/views/payment/billing.blade.php`
-- Webhook: `app/Http/Controllers/MidtransWebhookController.php`
-- Middleware lock: `app/Http/Middleware/EnsureOrganizationIsActive.php`, `bootstrap/app.php`
