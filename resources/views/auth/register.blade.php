@@ -2,10 +2,20 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <!-- Name -->
+        <!-- Organization Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-input-label for="organization_name" :value="__('Nama Organisasi')" />
+            <x-text-input id="organization_name" class="block mt-1 w-full" type="text" name="organization_name" :value="old('organization_name')" required autofocus autocomplete="organization" />
+            <x-input-error :messages="$errors->get('organization_name')" class="mt-2" />
+            <div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                Biaya aktivasi: Rp {{ number_format($registrationFee ?? 100000, 0, ',', '.') }}
+            </div>
+        </div>
+
+        <!-- Name -->
+        <div class="mt-4">
+            <x-input-label for="name" :value="__('Nama Admin')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
@@ -45,7 +55,7 @@
             </a>
 
             <x-primary-button class="ms-4">
-                {{ __('Register') }}
+                {{ __('Daftar & Bayar') }}
             </x-primary-button>
         </div>
     </form>

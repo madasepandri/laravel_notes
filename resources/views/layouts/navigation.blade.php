@@ -26,12 +26,18 @@
                         </x-nav-link>
                     @endif
                     @if(Auth::user()->role === 'admin')
-                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
-                            {{ __('Kelola Pengguna') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
-                            {{ __('Kelola Kategori') }}
-                        </x-nav-link>
+                        @if(!Auth::user()->organization?->is_active)
+                            <x-nav-link :href="route('billing.show')" :active="request()->routeIs('billing.*')">
+                                {{ __('Aktivasi') }}
+                            </x-nav-link>
+                        @else
+                            <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                                {{ __('Kelola Pengguna') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                                {{ __('Kelola Kategori') }}
+                            </x-nav-link>
+                        @endif
                     @endif
                 </div>
             </div>
@@ -99,12 +105,18 @@
                 </x-responsive-nav-link>
             @endif
             @if(Auth::user()->role === 'admin')
-                <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
-                    {{ __('Kelola Pengguna') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
-                    {{ __('Kelola Kategori') }}
-                </x-responsive-nav-link>
+                @if(!Auth::user()->organization?->is_active)
+                    <x-responsive-nav-link :href="route('billing.show')" :active="request()->routeIs('billing.*')">
+                        {{ __('Aktivasi') }}
+                    </x-responsive-nav-link>
+                @else
+                    <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                        {{ __('Kelola Pengguna') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                        {{ __('Kelola Kategori') }}
+                    </x-responsive-nav-link>
+                @endif
             @endif
         </div>
 

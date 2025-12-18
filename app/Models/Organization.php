@@ -12,7 +12,17 @@ class Organization extends Model
 
     protected $fillable = [
         'name',
+        'is_active',
+        'activated_at',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'activated_at' => 'datetime',
+        ];
+    }
 
     /**
      * Get the users for the organization.
@@ -28,5 +38,10 @@ class Organization extends Model
     public function categories(): HasMany
     {
         return $this->hasMany(Category::class);
+    }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
     }
 }
