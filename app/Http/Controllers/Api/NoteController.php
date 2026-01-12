@@ -22,6 +22,8 @@ class NoteController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'nullable|string',
+            'category_id' => 'nullable|exists:categories,id',
+            'organization_id' => 'nullable|exists:organizations,id',
         ]);
 
         $note = $request->user()->notes()->create($validated);
@@ -43,6 +45,8 @@ class NoteController extends Controller
         $validated = $request->validate([
             'title' => 'sometimes|required|string|max:255',
             'content' => 'nullable|string',
+            'category_id' => 'nullable|exists:categories,id',
+            'organization_id' => 'nullable|exists:organizations,id',
         ]);
 
         $note->update($validated);
