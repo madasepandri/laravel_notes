@@ -4205,6 +4205,4 @@ laravel_notes/
 
 ---
 
-Selamat! Anda telah menyelesaikan tutorial lengkap membangun aplikasi enterprise-grade dengan Laravel. Aplikasi ini siap dikembangkan lebih lanjut sesuai kebutuhan bisnis Anda.
-
 **Selamat belajar dan happy coding! 🚀**
