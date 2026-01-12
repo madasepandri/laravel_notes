@@ -11,11 +11,17 @@ class Note extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'title',
         'content',
         'category_id',
         'organization_id',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * Get the category that owns the note.
@@ -31,10 +37,5 @@ class Note extends Model
     public function organization(): BelongsTo
     {
         return $this->belongsTo(Organization::class);
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
     }
 }
