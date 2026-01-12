@@ -157,6 +157,8 @@ Mendapatkan semua notes milik user yang sedang login, diurutkan dari yang terbar
       "id": 1,
       "title": "My First Note",
       "content": "This is the content of my first note",
+      "category_id": 1,
+      "organization_id": 1,
       "created_at": "2026-01-12T03:50:00.000000Z",
       "updated_at": "2026-01-12T03:50:00.000000Z"
     },
@@ -164,6 +166,8 @@ Mendapatkan semua notes milik user yang sedang login, diurutkan dari yang terbar
       "id": 2,
       "title": "Shopping List",
       "content": "- Milk\n- Bread\n- Eggs",
+      "category_id": null,
+      "organization_id": 1,
       "created_at": "2026-01-12T04:00:00.000000Z",
       "updated_at": "2026-01-12T04:00:00.000000Z"
     }
@@ -198,7 +202,9 @@ Membuat note baru.
 ```json
 {
   "title": "My New Note",
-  "content": "This is the content of my new note"
+  "content": "This is the content of my new note",
+  "category_id": 1,
+  "organization_id": 1
 }
 ```
 
@@ -209,6 +215,16 @@ Membuat note baru.
     "id": 3,
     "title": "My New Note",
     "content": "This is the content of my new note",
+    "category_id": 1,
+    "organization_id": 1,
+    "category": {
+      "id": 1,
+      "name": "Work"
+    },
+    "organization": {
+      "id": 1,
+      "name": "My Company"
+    },
     "created_at": "2026-01-12T05:00:00.000000Z",
     "updated_at": "2026-01-12T05:00:00.000000Z"
   }
@@ -218,6 +234,8 @@ Membuat note baru.
 **Validasi:**
 - `title`: required, string, max 255 karakter
 - `content`: optional, string
+- `category_id`: optional, must exist in categories table
+- `organization_id`: optional, must exist in organizations table
 
 ---
 
@@ -235,6 +253,16 @@ Mendapatkan detail note berdasarkan ID. User hanya bisa melihat note miliknya se
     "id": 1,
     "title": "My First Note",
     "content": "This is the content of my first note",
+    "category_id": 1,
+    "organization_id": 1,
+    "category": {
+      "id": 1,
+      "name": "Work"
+    },
+    "organization": {
+      "id": 1,
+      "name": "My Company"
+    },
     "created_at": "2026-01-12T03:50:00.000000Z",
     "updated_at": "2026-01-12T03:50:00.000000Z"
   }
@@ -261,7 +289,9 @@ Mengupdate note. User hanya bisa mengupdate note miliknya sendiri.
 ```json
 {
   "title": "Updated Title",
-  "content": "Updated content"
+  "content": "Updated content",
+  "category_id": 2,
+  "organization_id": 1
 }
 ```
 
@@ -272,6 +302,16 @@ Mengupdate note. User hanya bisa mengupdate note miliknya sendiri.
     "id": 1,
     "title": "Updated Title",
     "content": "Updated content",
+    "category_id": 2,
+    "organization_id": 1,
+    "category": {
+      "id": 2,
+      "name": "Personal"
+    },
+    "organization": {
+      "id": 1,
+      "name": "My Company"
+    },
     "created_at": "2026-01-12T03:50:00.000000Z",
     "updated_at": "2026-01-12T05:30:00.000000Z"
   }
@@ -281,6 +321,8 @@ Mengupdate note. User hanya bisa mengupdate note miliknya sendiri.
 **Validasi:**
 - `title`: sometimes required, string, max 255 karakter
 - `content`: optional, string
+- `category_id`: optional, must exist in categories table
+- `organization_id`: optional, must exist in organizations table
 
 **Error Response (403):**
 ```json
